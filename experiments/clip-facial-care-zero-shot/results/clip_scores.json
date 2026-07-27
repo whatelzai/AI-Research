@@ -1,0 +1,698 @@
+[
+  {
+    "file": "02_man_shaving_face.jpg",
+    "query": "man shaving face",
+    "wikimedia_title": "File:A barber cuts a man's face whilst shaving him; a second barb Wellcome V0019676.jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of eye cream being applied",
+          "prob": 0.2730613946914673
+        },
+        "top3": [
+          {
+            "prompt": "a photo of eye cream being applied",
+            "prob": 0.2730613946914673
+          },
+          {
+            "prompt": "a photo of moisturizer being applied",
+            "prob": 0.26766398549079895
+          },
+          {
+            "prompt": "a photo of face wash being used",
+            "prob": 0.17305898666381836
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their neck",
+          "prob": 0.5028860569000244
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.5028860569000244
+          },
+          {
+            "prompt": "a photo of a person touching their forehead",
+            "prob": 0.2154655158519745
+          },
+          {
+            "prompt": "a photo of a person touching their cheek",
+            "prob": 0.1476527899503708
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person patting skin",
+          "prob": 0.3349416255950928
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.3349416255950928
+          },
+          {
+            "prompt": "a photo of a person massaging skin",
+            "prob": 0.2712388038635254
+          },
+          {
+            "prompt": "a photo of a person applying cream",
+            "prob": 0.23273369669914246
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of blemished skin",
+          "prob": 0.41336590051651
+        },
+        "top3": [
+          {
+            "prompt": "a photo of blemished skin",
+            "prob": 0.41336590051651
+          },
+          {
+            "prompt": "a photo of red irritated skin",
+            "prob": 0.3044430613517761
+          },
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.20848314464092255
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "03_woman_applying_lipstick.jpg",
+    "query": "woman applying lipstick",
+    "wikimedia_title": "File:Applying red lipstick - model Eve Casini.jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of lipstick being applied",
+          "prob": 0.8847207427024841
+        },
+        "top3": [
+          {
+            "prompt": "a photo of lipstick being applied",
+            "prob": 0.8847207427024841
+          },
+          {
+            "prompt": "a photo of mascara being applied",
+            "prob": 0.0924452468752861
+          },
+          {
+            "prompt": "a photo of moisturizer being applied",
+            "prob": 0.009778901003301144
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their lips",
+          "prob": 0.6768118739128113
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their lips",
+            "prob": 0.6768118739128113
+          },
+          {
+            "prompt": "a photo of a person touching their chin",
+            "prob": 0.14162306487560272
+          },
+          {
+            "prompt": "a photo of a person touching their eye area",
+            "prob": 0.10468476265668869
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person applying cream",
+          "prob": 0.8435009717941284
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person applying cream",
+            "prob": 0.8435009717941284
+          },
+          {
+            "prompt": "a photo of a person rinsing",
+            "prob": 0.052063193172216415
+          },
+          {
+            "prompt": "a photo of a person massaging skin",
+            "prob": 0.0439423993229866
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of red irritated skin",
+          "prob": 0.5052140355110168
+        },
+        "top3": [
+          {
+            "prompt": "a photo of red irritated skin",
+            "prob": 0.5052140355110168
+          },
+          {
+            "prompt": "a photo of blemished skin",
+            "prob": 0.3797195851802826
+          },
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.058437276631593704
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "05_eye_cream_application.jpg",
+    "query": "eye cream application",
+    "wikimedia_title": "File:Oak Street Ice Cream Hot Dogs Interior.jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of sunscreen being applied",
+          "prob": 0.3074699640274048
+        },
+        "top3": [
+          {
+            "prompt": "a photo of sunscreen being applied",
+            "prob": 0.3074699640274048
+          },
+          {
+            "prompt": "a photo of shampoo being used",
+            "prob": 0.2997259199619293
+          },
+          {
+            "prompt": "a photo of face wash being used",
+            "prob": 0.21887008845806122
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their hair",
+          "prob": 0.37378543615341187
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their hair",
+            "prob": 0.37378543615341187
+          },
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.3544232249259949
+          },
+          {
+            "prompt": "a photo of a person touching their chin",
+            "prob": 0.10402637720108032
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person applying cream",
+          "prob": 0.363248348236084
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person applying cream",
+            "prob": 0.363248348236084
+          },
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.2553554177284241
+          },
+          {
+            "prompt": "a photo of a person rinsing",
+            "prob": 0.11951592564582825
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of smooth skin",
+          "prob": 0.24944674968719482
+        },
+        "top3": [
+          {
+            "prompt": "a photo of smooth skin",
+            "prob": 0.24944674968719482
+          },
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.21798379719257355
+          },
+          {
+            "prompt": "a photo of oily skin",
+            "prob": 0.1563432365655899
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "06_man_face_wash.jpg",
+    "query": "man face wash",
+    "wikimedia_title": "File:An interior of a room in which a man is having his face wash Wellcome V0019908EL.jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of eye cream being applied",
+          "prob": 0.23910868167877197
+        },
+        "top3": [
+          {
+            "prompt": "a photo of eye cream being applied",
+            "prob": 0.23910868167877197
+          },
+          {
+            "prompt": "a photo of face wash being used",
+            "prob": 0.21855343878269196
+          },
+          {
+            "prompt": "a photo of shampoo being used",
+            "prob": 0.2159091830253601
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their neck",
+          "prob": 0.24250070750713348
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.24250070750713348
+          },
+          {
+            "prompt": "a photo of a person touching their forehead",
+            "prob": 0.20321333408355713
+          },
+          {
+            "prompt": "a photo of a person touching their cheek",
+            "prob": 0.1927143782377243
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person patting skin",
+          "prob": 0.26226282119750977
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.26226282119750977
+          },
+          {
+            "prompt": "a photo of a person applying cream",
+            "prob": 0.1860577017068863
+          },
+          {
+            "prompt": "a photo of a person rubbing skin",
+            "prob": 0.16264154016971588
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of dry skin",
+          "prob": 0.3255462944507599
+        },
+        "top3": [
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.3255462944507599
+          },
+          {
+            "prompt": "a photo of blemished skin",
+            "prob": 0.2899254262447357
+          },
+          {
+            "prompt": "a photo of red irritated skin",
+            "prob": 0.24501121044158936
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "07_facial_mask_sheet.jpg",
+    "query": "facial mask sheet",
+    "wikimedia_title": "File:The Macedonian tomb of Aghia Paraskevi (8725600031).jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of shampoo being used",
+          "prob": 0.5795547366142273
+        },
+        "top3": [
+          {
+            "prompt": "a photo of shampoo being used",
+            "prob": 0.5795547366142273
+          },
+          {
+            "prompt": "a photo of face wash being used",
+            "prob": 0.22071637213230133
+          },
+          {
+            "prompt": "a photo of foundation being applied",
+            "prob": 0.0791897177696228
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their hair",
+          "prob": 0.3498000502586365
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their hair",
+            "prob": 0.3498000502586365
+          },
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.3020167648792267
+          },
+          {
+            "prompt": "a photo of a person touching their forehead",
+            "prob": 0.10355039685964584
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person patting skin",
+          "prob": 0.48358044028282166
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.48358044028282166
+          },
+          {
+            "prompt": "a photo of a person massaging skin",
+            "prob": 0.16726604104042053
+          },
+          {
+            "prompt": "a photo of a person rubbing skin",
+            "prob": 0.11919493973255157
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of dry skin",
+          "prob": 0.47980454564094543
+        },
+        "top3": [
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.47980454564094543
+          },
+          {
+            "prompt": "a photo of oily skin",
+            "prob": 0.23485584557056427
+          },
+          {
+            "prompt": "a photo of blemished skin",
+            "prob": 0.16793452203273773
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "00_moisturizer_skincare_cream_face.jpg",
+    "query": "skincare cream face",
+    "wikimedia_title": "File:India Alternative Medicine and Herbal Products Market Report.jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of a face mask sheet on the face",
+          "prob": 0.44554370641708374
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a face mask sheet on the face",
+            "prob": 0.44554370641708374
+          },
+          {
+            "prompt": "a photo of face wash being used",
+            "prob": 0.2510692775249481
+          },
+          {
+            "prompt": "a photo of shampoo being used",
+            "prob": 0.14933468401432037
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their eye area",
+          "prob": 0.4324643909931183
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their eye area",
+            "prob": 0.4324643909931183
+          },
+          {
+            "prompt": "a photo of a person touching their forehead",
+            "prob": 0.14513827860355377
+          },
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.13902652263641357
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person massaging skin",
+          "prob": 0.39693784713745117
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person massaging skin",
+            "prob": 0.39693784713745117
+          },
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.3085081875324249
+          },
+          {
+            "prompt": "a photo of a person rubbing skin",
+            "prob": 0.1961090862751007
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of dry skin",
+          "prob": 0.37616512179374695
+        },
+        "top3": [
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.37616512179374695
+          },
+          {
+            "prompt": "a photo of red irritated skin",
+            "prob": 0.33621862530708313
+          },
+          {
+            "prompt": "a photo of oily skin",
+            "prob": 0.2236979454755783
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "01_shampoo_hair_washing.jpg",
+    "query": "hair washing",
+    "wikimedia_title": "File:Professional hair washing class in Baozhong Junior High School 20121005.jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of face wash being used",
+          "prob": 0.3888039290904999
+        },
+        "top3": [
+          {
+            "prompt": "a photo of face wash being used",
+            "prob": 0.3888039290904999
+          },
+          {
+            "prompt": "a photo of sunscreen being applied",
+            "prob": 0.21107035875320435
+          },
+          {
+            "prompt": "a photo of eye cream being applied",
+            "prob": 0.11484191566705704
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their neck",
+          "prob": 0.5127653479576111
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.5127653479576111
+          },
+          {
+            "prompt": "a photo of a person touching their forehead",
+            "prob": 0.19057931005954742
+          },
+          {
+            "prompt": "a photo of a person touching their chin",
+            "prob": 0.15418459475040436
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person patting skin",
+          "prob": 0.3735426366329193
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.3735426366329193
+          },
+          {
+            "prompt": "a photo of a person massaging skin",
+            "prob": 0.35211294889450073
+          },
+          {
+            "prompt": "a photo of a person applying cream",
+            "prob": 0.092330701649189
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of red irritated skin",
+          "prob": 0.3877050280570984
+        },
+        "top3": [
+          {
+            "prompt": "a photo of red irritated skin",
+            "prob": 0.3877050280570984
+          },
+          {
+            "prompt": "a photo of smooth skin",
+            "prob": 0.19668669998645782
+          },
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.15334667265415192
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "04_sunscreen_sun_cream_applying.jpg",
+    "query": "sun cream applying",
+    "wikimedia_title": "File:Remains of Hanig Ice Cream Parlor - St. Thomas (24ca5e13-2e80-4125-8159-db7475a869f8).jpg",
+    "axes": {
+      "product_category": {
+        "top1": {
+          "prompt": "a photo of sunscreen being applied",
+          "prob": 0.39731565117836
+        },
+        "top3": [
+          {
+            "prompt": "a photo of sunscreen being applied",
+            "prob": 0.39731565117836
+          },
+          {
+            "prompt": "a photo of foundation being applied",
+            "prob": 0.39535772800445557
+          },
+          {
+            "prompt": "a photo of moisturizer being applied",
+            "prob": 0.10980698466300964
+          }
+        ]
+      },
+      "application_region": {
+        "top1": {
+          "prompt": "a photo of a person touching their neck",
+          "prob": 0.49901050329208374
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person touching their neck",
+            "prob": 0.49901050329208374
+          },
+          {
+            "prompt": "a photo of a person touching their chin",
+            "prob": 0.13558116555213928
+          },
+          {
+            "prompt": "a photo of a person touching their cheek",
+            "prob": 0.11116201430559158
+          }
+        ]
+      },
+      "action_verb": {
+        "top1": {
+          "prompt": "a photo of a person drying with a towel",
+          "prob": 0.2939413785934448
+        },
+        "top3": [
+          {
+            "prompt": "a photo of a person drying with a towel",
+            "prob": 0.2939413785934448
+          },
+          {
+            "prompt": "a photo of a person patting skin",
+            "prob": 0.1898230016231537
+          },
+          {
+            "prompt": "a photo of a person spraying",
+            "prob": 0.15595781803131104
+          }
+        ]
+      },
+      "skin_state": {
+        "top1": {
+          "prompt": "a photo of dry skin",
+          "prob": 0.7440045475959778
+        },
+        "top3": [
+          {
+            "prompt": "a photo of dry skin",
+            "prob": 0.7440045475959778
+          },
+          {
+            "prompt": "a photo of blemished skin",
+            "prob": 0.12940603494644165
+          },
+          {
+            "prompt": "a photo of smooth skin",
+            "prob": 0.07622276246547699
+          }
+        ]
+      }
+    }
+  }
+]

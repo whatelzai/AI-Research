@@ -1,0 +1,17 @@
+# Claude Code — personal (per-machine) settings
+.claude/settings.local.json
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Model / dataset caches (should live in ~/.cache, not repo)
+.cache/
+huggingface/

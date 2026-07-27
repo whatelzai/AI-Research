@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__emdee__get_doc",
+      "mcp__emdee__read_doc_section",
+      "mcp__emdee__search",
+      "mcp__emdee__list_docs",
+      "mcp__emdee__get_neighbors",
+      "mcp__supabase__list_projects",
+      "mcp__supabase__list_tables",
+      "mcp__supabase__list_migrations",
+      "mcp__atlas__get_ticket_logic",
+      "mcp__atlas__get_backtest_for_distillation",
+      "mcp__atlas__list_ticket_logics",
+      "mcp__atlas__list_ticket_backtests",
+      "Bash(emdee get-doc *)",
+      "Bash(emdee read-doc-section *)",
+      "Bash(emdee list *)",
+      "Bash(emdee list-docs *)",
+      "Bash(emdee lint-orphans *)"
+    ]
+  }
+}
