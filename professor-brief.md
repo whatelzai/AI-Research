@@ -4,7 +4,7 @@
 
 ## Where I've been putting the time
 
-Working through the substrate of concept-driven video understanding — 15 papers across six phases (image foundations → VLMs → video → concept & weak supervision → generative → Sept-2024 SOTA), structured as a knowledge graph of ~20 reusable concept nodes I can pull into any specific problem. One small experiment (CLIP zero-shot on facial-care images) grounded the reading in the fine-grained regime the JD describes. This isn't a claim of expertise — it's the map I built so we can talk in specifics rather than vocabulary.
+Working through the substrate of concept-driven video understanding — 32 papers across seven phases (image foundations → VLMs → video → concept & weak supervision → generative → Sept-2024 SOTA → 2025 SOTA + adjacent recipes), structured as a knowledge graph of ~25 reusable concept nodes I can pull into any specific problem. One small experiment (CLIP zero-shot on facial-care images) grounded the reading in the fine-grained regime the JD describes. This isn't a claim of expertise — it's the map I built so we can talk in specifics rather than vocabulary.
 
 ## My reading of what SNAIC × P&G is actually working on
 
@@ -12,25 +12,28 @@ Working through the substrate of concept-driven video understanding — 15 paper
 
 Concept-driven video understanding of consumer-recorded facial-care videos isn't standard action recognition or captioning. The videos are noisy, unlabeled, single-subject, long-form, and the interesting content is subtle: which product, applied where, how, over what skin state, in what step of a routine. Off-the-shelf image-CLIP is documented weak at exactly this fine-grained regime — I ran a small CLIP zero-shot test on 8 facial-care images and the fine-grained axes (region, gesture, skin state) confirmed this, with skin-state prompts essentially at chance.
 
-But the picture shifted meaningfully once I read the Sept-2024 SOTA (Qwen2-VL, LLaVA-OneVision). Open-source VLMs now match GPT-4o on multimodal benchmarks, handle 20+ min video via dynamic-resolution tokenization, and — critically — LLaVA-OneVision demonstrates that video capability and multi-image reasoning **emerge** from image + video co-training without explicit multi-image supervision. That reframes the research question.
+But the picture shifted meaningfully once I reached the 2024-2025 SOTA (Qwen2.5-VL, LLaVA-OneVision, InternVideo2). Open-source VLMs now match GPT-4o on multimodal benchmarks, handle 20+ min video via dynamic-resolution tokenization, and cross-scenario capabilities emerge from co-training without explicit supervision. Combined with automated concept generation (Label-Free CBM: GPT + CLIP replaces human concept annotation), the concept-driven paradigm is now practically deployable at foundation-model scale. **The research question has shifted from "how do we build this" to "which components dominate and how do we evaluate them."**
 
-## The strategic fork I'd want your steer on
+## A candidate pipeline
 
-The Phase 1-5 reading pointed me toward a ground-up pipeline: automated curation → self-supervised video pretraining (VideoMAE) → concept bottleneck → task heads. The Phase 6 reading suggests a different order of operations may dominate:
+*Named components — the specific choices I'd defend, curious where you'd redirect.*
 
-**Option A — SOTA fine-tune first.** Take Qwen2-VL 72B as the substrate. Use it to re-caption P&G footage into structured concept labels (LLaVA-OneVision's 99.8%-synthetic-data trick shows this works at scale). Fine-tune a concept-bottleneck adapter on top. Ship the baseline in weeks.
+1. **Base VLM** — Qwen2.5-VL. Native-resolution ViT with window attention, absolute-time M-RoPE for second-level step localization in long routines, dynamic FPS handling, native visual grounding, agent-trajectory training data.
+2. **Data bootstrapping** — CapFilt-style re-captioning of P&G footage with Qwen2.5-VL itself, producing structured concept-tagged descriptions at scale. The LLaVA-OneVision result (99.8% synthetic instruction data works) makes this credible.
+3. **Concept bottleneck** — Label-Free CBM pipeline: Qwen2.5-VL generates concept vocabulary from a facial-care taxonomy, SigLIP scores frames against concepts, sparse elastic-net produces the final concept-to-task layer. First stage of the architecture that scales CBM beyond CUB-sized datasets. Human weight-editing property preserved for auditability.
+4. **Detection primitive** — Grounding DINO for open-vocabulary product / region / gesture detection via text prompts. Eliminates per-SKU detector training.
+5. **Fine-tuning mechanism** — LoRA adapters on Qwen2.5-VL. Cheap per-concept, swappable, no inference latency.
+6. **Optional — audio channel via InternVideo2's tri-modal fusion** (video + voice-over + ASR → LLM-fused captions). Most video-VLMs discard audio; facial-care tutorials typically have narration that names products and steps.
 
-**Option B — Ground-up domain pipeline.** Automated curation from raw web video, VideoMAE tube-masked pretraining on the curated corpus, concept bottleneck from scratch. VideoMAE's data-efficiency finding (SOTA on SSv2 from ~3.5k in-domain clips, in-domain always beating larger out-of-domain) makes this defensible even at P&G scale. Slower, but the model is fully owned and domain-adapted.
+Where does this pipeline *not* match what you have in mind?
 
-They're not mutually exclusive — A gives you a baseline to beat with B — but **which one is the right first bet** determines the entire team's compute and calendar. This is the question I'd most want your read on. Adjacent design choices (concept vocabulary, VLM-supervision noise threshold, audio channel, synthetic augmentation) fall out of that answer.
+## Open questions I'd want your steer on
 
-## Open questions I'd love to work through with you
-
-1. **A or B first?** — as above.
-2. **What's the right concept vocabulary for facial-care?** Product-driven, behaviour-driven, skin-state-driven, routine-step-driven — probably a hybrid, but which axes matter for P&G's downstream applications determines everything upstream.
-3. **How noisy can VLM-generated concept labels be before concept bottleneck breaks?** The paper only tests clean human labels; VLM-supervision is the direction the field is going but empirically the noise threshold is under-studied.
-4. **Consent & synthetic imagery.** If the pipeline includes generating consumer-face video for augmentation (Video LDM), the ethics call-out (deepfake / misuse) applies. Worth naming a plan up front rather than being asked about it later.
-5. **What does P&G actually want to do with the outputs?** Search, dashboarding, product recommendation, agentic tutoring — the downstream use case would sharpen the concept vocabulary in (2) and the A-vs-B call in (1).
+1. **Which component is the research contribution vs. engineering integration?** My guess: the concept bottleneck design + evaluation methodology + audit workflow. The base model and detection primitive are engineering choices; the concept-driven layer is where original work lives.
+2. **What's the right concept vocabulary for facial-care?** Product-driven, behaviour-driven, skin-state-driven, routine-step-driven — probably a hybrid. VLM-supervised generation gives a candidate set; humans must curate the final taxonomy. This is where your domain judgment matters most.
+3. **How noisy can VLM-generated concept labels be before the bottleneck breaks?** Label-Free CBM only tested on CIFAR / CUB / ImageNet; noise threshold on messy consumer video is under-studied. Empirical question worth designing an early experiment around.
+4. **What's the evaluation metric?** Concept-level accuracy? Downstream task performance? Intervention effectiveness (how often does human editing fix errors)? Auditability score? Choice of metric shapes the entire iteration loop.
+5. **What does P&G actually want to do with the outputs?** Passive analysis / dashboarding / product recommendation / agent-style tutorial reasoning — the deployment shape sharpens everything upstream.
 
 ## What I'd bring
 
