@@ -28,6 +28,8 @@ Examples:
 | `2020-concept-bottleneck-koh` | Concept Bottleneck Models | ICML 2020 | `CONCEPT-BOTTLENECK-ARCHITECTURE` | — | noted |
 | `2021-latent-diffusion-rombach` | High-Resolution Image Synthesis with Latent Diffusion Models | CVPR 2022 | `LATENT-DIFFUSION`, `CROSS-ATTENTION-CONDITIONING-FOR-DIFFUSION`, `INDUCTIVE-BIAS-VS-SCALE-TRADEOFF` | — | noted |
 | `2023-video-ldm-blattmann` | Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models | CVPR 2023 | `FREEZE-IMAGE-BACKBONE-ADD-TEMPORAL-LAYERS`, `LATENT-DIFFUSION`, `FROZEN-BACKBONE-BRIDGE-TO-LLM` | — | noted |
+| `2024-qwen2-vl-wang` | Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution | arXiv 2024 | `DYNAMIC-RESOLUTION-VISUAL-TOKENIZATION`, `MULTIMODAL-ROTARY-POSITION-EMBEDDING`, `SPACE-TIME-PATCH-EMBEDDING`, `PATCH-EMBEDDING` | — | noted |
+| `2024-llava-onevision-li` | LLaVA-OneVision: Easy Visual Task Transfer | arXiv 2024 | `DYNAMIC-RESOLUTION-VISUAL-TOKENIZATION`, `VISUAL-INSTRUCTION-TUNING`, `SPACE-TIME-PATCH-EMBEDDING`, `PATCH-EMBEDDING` | — | noted |
 
 **Status:** `queued` → `reading` → `noted` → `built`
 

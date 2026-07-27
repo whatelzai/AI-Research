@@ -4,35 +4,33 @@
 
 ## Where I've been putting the time
 
-Working through the substrate of concept-driven video understanding — 13 papers across five phases (image foundations → VLMs → video → concept & weak supervision → generative), structured as a knowledge graph of ~18 reusable concept nodes I can pull into any specific problem. One small experiment (CLIP zero-shot on facial-care images) grounded the reading in the fine-grained regime the JD describes. This isn't a claim of expertise — it's the map I built so we can talk in specifics rather than vocabulary.
+Working through the substrate of concept-driven video understanding — 15 papers across six phases (image foundations → VLMs → video → concept & weak supervision → generative → Sept-2024 SOTA), structured as a knowledge graph of ~20 reusable concept nodes I can pull into any specific problem. One small experiment (CLIP zero-shot on facial-care images) grounded the reading in the fine-grained regime the JD describes. This isn't a claim of expertise — it's the map I built so we can talk in specifics rather than vocabulary.
 
 ## My reading of what SNAIC × P&G is actually working on
 
 *Please correct me — this is my best guess before the conversation.*
 
-Concept-driven video understanding of consumer-recorded facial-care videos isn't standard action recognition or captioning. The videos are noisy, unlabeled, single-subject, long-form, and the interesting content is subtle: which product, applied where, how, over what skin state, in what step of a routine. Off-the-shelf VLMs (CLIP, LLaVA, Video-LLaMA) are trained on caption-heavy web data and are documented weak at exactly this fine-grained regime — I ran a small CLIP zero-shot test on 8 facial-care images and the fine-grained axes (region, gesture, skin state) confirmed this, with skin-state prompts essentially at chance.
+Concept-driven video understanding of consumer-recorded facial-care videos isn't standard action recognition or captioning. The videos are noisy, unlabeled, single-subject, long-form, and the interesting content is subtle: which product, applied where, how, over what skin state, in what step of a routine. Off-the-shelf image-CLIP is documented weak at exactly this fine-grained regime — I ran a small CLIP zero-shot test on 8 facial-care images and the fine-grained axes (region, gesture, skin state) confirmed this, with skin-state prompts essentially at chance.
 
-That suggests the research question is less "which SOTA VLM do we bolt on" and more "what supervision + architecture combination makes concept-driven understanding tractable on a domain-specific corpus."
+But the picture shifted meaningfully once I read the Sept-2024 SOTA (Qwen2-VL, LLaVA-OneVision). Open-source VLMs now match GPT-4o on multimodal benchmarks, handle 20+ min video via dynamic-resolution tokenization, and — critically — LLaVA-OneVision demonstrates that video capability and multi-image reasoning **emerge** from image + video co-training without explicit multi-image supervision. That reframes the research question.
 
-## A candidate pipeline I've been thinking about
+## The strategic fork I'd want your steer on
 
-Curious how close or far this is from what you have in mind:
+The Phase 1-5 reading pointed me toward a ground-up pipeline: automated curation → self-supervised video pretraining (VideoMAE) → concept bottleneck → task heads. The Phase 6 reading suggests a different order of operations may dominate:
 
-1. **Domain corpus** — LVD-142M-style automated curation (DINOv2), seeded with P&G's proprietary set, retrieving nearest-neighbour clips from raw web video (facial-care tutorials, product reviews). Turns a small proprietary corpus into a much larger curated pretraining substrate.
-2. **Self-supervised video encoder** — VideoMAE (tube-masked MIM at 90-95% ratio) trained on that curated corpus. VideoMAE's data-efficiency finding is important here: they got SOTA on SSv2 from ~3.5k in-domain clips with no external data, and in-domain always beat larger out-of-domain — which changes the calculus for a P&G-scale corpus.
-3. **Concept bottleneck** — route predictions through a named-concept intermediate layer (`product-category`, `application-region`, `gesture-type`, `skin-state`, `routine-step`). Test-time intervention comes free. Concept supervision can be bootstrapped from a VLM rather than requiring hand labels.
-4. **Optional synthetic augmentation** — Video-LDM's freeze-image-add-temporal-layers recipe for generating targeted synthetic training clips (rare skin conditions, edge-case demographics, uncommon techniques). Closes the data-scarcity loop that curation opens.
-5. **Optional audio channel** — most video-VLMs discard it. Consumer facial-care video usually has voice-over (product name, technique, step). ImageBind-style shared-embedding bridging gets zero-shot audio understanding without needing paired audio-text data.
+**Option A — SOTA fine-tune first.** Take Qwen2-VL 72B as the substrate. Use it to re-caption P&G footage into structured concept labels (LLaVA-OneVision's 99.8%-synthetic-data trick shows this works at scale). Fine-tune a concept-bottleneck adapter on top. Ship the baseline in weeks.
 
-Each step is one design choice; each has documented tradeoffs; none of it is settled.
+**Option B — Ground-up domain pipeline.** Automated curation from raw web video, VideoMAE tube-masked pretraining on the curated corpus, concept bottleneck from scratch. VideoMAE's data-efficiency finding (SOTA on SSv2 from ~3.5k in-domain clips, in-domain always beating larger out-of-domain) makes this defensible even at P&G scale. Slower, but the model is fully owned and domain-adapted.
+
+They're not mutually exclusive — A gives you a baseline to beat with B — but **which one is the right first bet** determines the entire team's compute and calendar. This is the question I'd most want your read on. Adjacent design choices (concept vocabulary, VLM-supervision noise threshold, audio channel, synthetic augmentation) fall out of that answer.
 
 ## Open questions I'd love to work through with you
 
-1. **What's the right concept vocabulary for facial-care?** Product-driven, behaviour-driven, skin-state-driven, routine-step-driven — probably a hybrid, but which axes matter for P&G's downstream applications determines everything upstream.
-2. **How noisy can VLM-generated concept labels be before concept bottleneck breaks?** The paper only tests clean human labels. VLM-supervised extensions are the direction the field is going, but empirically the noise threshold is under-studied.
-3. **Is temporal concept drift a solved problem, or a research direction?** Image CBM literature is mature; video CBM is thin. Whether a gesture is "applying" vs "massaging" changes across the same clip.
-4. **Consent & synthetic imagery.** If the pipeline includes generating consumer-face video for augmentation, the ethics call-out from the LDM paper (deepfake / misuse) applies. Worth naming a plan up front rather than being asked about it later.
-5. **What does P&G actually want to do with the outputs?** Search, dashboarding, product recommendation, agentic tutoring — the downstream use case would sharpen the concept vocabulary in (1).
+1. **A or B first?** — as above.
+2. **What's the right concept vocabulary for facial-care?** Product-driven, behaviour-driven, skin-state-driven, routine-step-driven — probably a hybrid, but which axes matter for P&G's downstream applications determines everything upstream.
+3. **How noisy can VLM-generated concept labels be before concept bottleneck breaks?** The paper only tests clean human labels; VLM-supervision is the direction the field is going but empirically the noise threshold is under-studied.
+4. **Consent & synthetic imagery.** If the pipeline includes generating consumer-face video for augmentation (Video LDM), the ethics call-out (deepfake / misuse) applies. Worth naming a plan up front rather than being asked about it later.
+5. **What does P&G actually want to do with the outputs?** Search, dashboarding, product recommendation, agentic tutoring — the downstream use case would sharpen the concept vocabulary in (2) and the A-vs-B call in (1).
 
 ## What I'd bring
 
@@ -40,4 +38,4 @@ Not a research CV, so being honest — a systems background that ships. What I'v
 
 ---
 
-*If useful, the concept-node graph is in my EMDEE vault under `edmund/research/ai/cv/` — happy to walk through any node in more detail. The experiment code is in a GitHub repo I can share on request.*
+*Concept-node graph in my EMDEE vault under `edmund/research/ai/` — happy to walk through any node in more detail. Experiment code and reading notes are in a GitHub repo I can share on request. I'll also be posting short daily explainer videos on YouTube through the application window as a public-learning receipt.*
